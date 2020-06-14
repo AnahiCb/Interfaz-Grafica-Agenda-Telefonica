@@ -5,10 +5,33 @@
  */
 package ec.edu.ups.controlador;
 
+import ec.edu.ups.dao.TelefonoDao;
+import ec.edu.ups.idao.ITelefonoDao;
+import ec.edu.ups.modelo.Telefono;
+import ec.edu.ups.vista.VentanaTelefono;
+
 /**
  *
  * @author Anahi
  */
 public class ControladorTelefono {
+    private VentanaTelefono vent;
+    private Telefono telefono;
+    private ITelefonoDao telefonoD;
+    //constructor
+
+    public ControladorTelefono(TelefonoDao telefonoD) { 
+        this.telefonoD = telefonoD;
+    }
     
+    public void crearTelefono(Telefono telefono){
+        telefonoD.create(telefono);
+    }
+    
+    public Telefono encontrarTelefono(int codigo){
+        
+        telefono = telefonoD.read(codigo);
+        
+        return telefono;
+    }
 }
